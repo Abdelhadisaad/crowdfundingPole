@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('donationDashboard');
 });
 
 Auth::routes();
@@ -24,3 +24,5 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('donation/dashboard', [App\Http\Controllers\DonationController::class, 'index'])->name('index');
+Route::get('admin/dashboard', [App\Http\Controllers\AdminController::class, 'index'])->name('index');
