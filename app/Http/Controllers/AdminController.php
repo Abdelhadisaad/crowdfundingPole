@@ -10,4 +10,9 @@ class AdminController extends Controller
 
         return view("adminDashboard");
     }
+
+    public function addGoal() {
+
+        return view("addGoal");
+    }
 }

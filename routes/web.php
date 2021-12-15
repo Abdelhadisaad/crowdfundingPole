@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Models\Goal;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -14,7 +16,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('donationDashboard');
+    $goals = Goal::all();
+    return view("donationDashboard", compact('goals'));
 });
 
 Auth::routes();
@@ -26,3 +29,5 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('donation/dashboard', [App\Http\Controllers\DonationController::class, 'index'])->name('index');
 Route::get('admin/dashboard', [App\Http\Controllers\AdminController::class, 'index'])->name('index');
+Route::get('add/goal', [App\Http\Controllers\AdminController::class, 'addGoal'])->name('addGoal');
+Route::get('my/donations', [App\Http\Controllers\DonationController::class, 'myDonations'])->name('myDonations');

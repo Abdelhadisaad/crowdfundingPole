@@ -8,13 +8,30 @@
                     <div class="card-header">{{ __('Dashboard') }}</div>
 
                     <div class="card-body">
-                        @if (session('status'))
-                            <div class="alert alert-success" role="alert">
-                                {{ session('status') }}
-                            </div>
-                        @endif
+                        <table style="width: 95%" class="table">
+                            <thead>
+                            <tr>
+                                <th scope="col">Name</th>
+                                <th scope="col">Limit</th>
+                                <th scope="col">Description</th>
+                                <th scope="col">Donate</th>
 
-                        {{ __('dashboard') }}
+                            </tr>
+                            </thead>
+                            <tbody>
+                            @foreach($goals as $goal)
+                                <tr>
+                                    <td>{{$goal['name']}}</td>
+                                    <td>{{$goal['limit']}}</td>
+                                    <td>{{$goal['description']}} </td>
+                                    <td> @if (Auth::check())  <a class="btn btn-danger" href="/donate/verwijderen/{{$goal['id']}}">Donate</a> @else  pls log in to donate @endif</td>
+
+
+                                    <td></td>
+                                </tr>
+                            @endforeach
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
